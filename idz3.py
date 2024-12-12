@@ -25,14 +25,15 @@ def depth_limited_search(node, limit, depth=0):
     # Возвращаем максимальное значение между найденными ценностями
     return max(left_value, right_value)
 
-root = BinaryTreeNode(
-    3,
-    BinaryTreeNode(1, BinaryTreeNode(0), None),
-    BinaryTreeNode(5, BinaryTreeNode(4), BinaryTreeNode(6)),
-)
+if __name__ == "__main__":
+    root = BinaryTreeNode(
+        3,
+        BinaryTreeNode(1, BinaryTreeNode(0), None),
+        BinaryTreeNode(5, BinaryTreeNode(4), BinaryTreeNode(6)),
+    )
+    
+    limit = 2
 
-limit = 2
-
-# Вызов функции поиска максимального значения
-max_value = depth_limited_search(root, limit)
-print(f"Максимальное значение на указанной глубине: {max_value}")
+    # Вызов функции поиска максимального значения
+    max_value = depth_limited_search(root, limit)
+    print(f"Максимальное значение на указанной глубине: {max_value}")
