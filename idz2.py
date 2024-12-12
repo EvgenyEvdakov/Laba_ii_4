@@ -29,20 +29,20 @@ def depth_limited_search(node, goal, limit, depth=0):
     found_in_right = depth_limited_search(node.right, goal, limit, depth + 1)
     return found_in_right
 
+if __name__ == "__main__":
+    # Создание дерева и установка значений
+    root = BinaryTreeNode(
+        1,
+        BinaryTreeNode(2, None, BinaryTreeNode(4)),
+        BinaryTreeNode(3, BinaryTreeNode(5), None),
+    )
 
-# Создание дерева и установка значений
-root = BinaryTreeNode(
-    1,
-    BinaryTreeNode(2, None, BinaryTreeNode(4)),
-    BinaryTreeNode(3, BinaryTreeNode(5), None),
-)
+    goal = 4
+    limit = 2
 
-goal = 4
-limit = 2
-
-# Вызов функции поиска
-result = depth_limited_search(root, goal, limit)
-if result is not None:
-    print(f"Цель найдена: {result}")
-else:
-    print("Цель не найдена")
+    # Вызов функции поиска
+    result = depth_limited_search(root, goal, limit)
+    if result is not None:
+        print(f"Цель найдена: {result}")
+    else:
+        print("Цель не найдена")
