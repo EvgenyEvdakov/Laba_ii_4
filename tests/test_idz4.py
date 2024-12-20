@@ -2,6 +2,9 @@
 # -*- coding: utf-8 -*-
 
 import unittest
+import sys
+
+sys.path.append('../src')
 from idz4 import Node, Problem, depth_limited_search
 
 
