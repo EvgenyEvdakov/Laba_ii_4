@@ -3,6 +3,7 @@
 
 # Система управления складом
 
+
 class BinaryTreeNode:
     def __init__(self, value, left=None, right=None):
         self.value = value
@@ -28,6 +29,7 @@ def depth_limited_search(node, goal, limit, depth=0):
 
     found_in_right = depth_limited_search(node.right, goal, limit, depth + 1)
     return found_in_right
+
 
 if __name__ == "__main__":
     # Создание дерева и установка значений

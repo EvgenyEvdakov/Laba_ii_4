@@ -5,6 +5,7 @@
 # которая с помощью алгоритма поиска с ограничением глубины находит минимальное расстояние между начальным и
 # конечным пунктами.
 
+
 class Node:
     def __init__(self, state, parent=None, path_cost=0):
         self.state = state  # Текущий узел
@@ -65,19 +66,17 @@ def depth_limited_search(problem, graph, limit, node=None, depth=0):
         return node.path(), node.path_cost, depth
 
     if depth >= limit:
-        return None, float('inf'), None  # Достигнуто ограничение глубины
+        return None, float("inf"), None  # Достигнуто ограничение глубины
 
     if is_cycle(node):
-        return None, float('inf'), None
+        return None, float("inf"), None
 
-    min_distance = float('inf')
+    min_distance = float("inf")
     best_path = None
     best_depth = None
 
     for child in expand(graph, node):
-        result_path, result_distance, result_depth = depth_limited_search(
-            problem, graph, limit, child, depth + 1
-        )
+        result_path, result_distance, result_depth = depth_limited_search(problem, graph, limit, child, depth + 1)
         if result_path and result_distance < min_distance:
             min_distance = result_distance
             best_path = result_path

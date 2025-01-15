@@ -1,30 +1,25 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-import unittest
 import sys
+import unittest
 
-sys.path.append('../src')
+
+sys.path.append("../src")
 from idz4 import Node, Problem, depth_limited_search
 
 
 class TestGraphSearch(unittest.TestCase):
     def setUp(self):
         # Определяем тестовый граф (список смежности)
-        self.graph = {
-            1: [(2, 10), (3, 15)],
-            2: [(4, 12)],
-            3: [(4, 10)],
-            4: [(5, 5)],
-            5: []
-        }
+        self.graph = {1: [(2, 10), (3, 15)], 2: [(4, 12)], 3: [(4, 10)], 4: [(5, 5)], 5: []}
 
     def test_no_solution_within_limit(self):
         # Проверяем случай, когда цель не может быть достигнута в пределах лимита
         problem = Problem(1, 5)
         path, distance, depth = depth_limited_search(problem, self.graph, 2)
         self.assertIsNone(path)
-        self.assertEqual(distance, float('inf'))
+        self.assertEqual(distance, float("inf"))
         self.assertIsNone(depth)
 
     def test_no_solution_if_goal_not_reachable(self):
@@ -32,7 +27,7 @@ class TestGraphSearch(unittest.TestCase):
         problem = Problem(1, 6)  # Узла 6 нет в графе
         path, distance, depth = depth_limited_search(problem, self.graph, 10)
         self.assertIsNone(path)
-        self.assertEqual(distance, float('inf'))
+        self.assertEqual(distance, float("inf"))
         self.assertIsNone(depth)
 
     def test_cycle_detection(self):
@@ -45,14 +40,12 @@ class TestGraphSearch(unittest.TestCase):
         problem = Problem(1, 4)
         path, distance, depth = depth_limited_search(problem, cyclic_graph, 5)
         self.assertIsNone(path)
-        self.assertEqual(distance, float('inf'))
+        self.assertEqual(distance, float("inf"))
         self.assertIsNone(depth)
 
     def test_single_node_graph(self):
         # Проверяем случай графа с единственным узлом
-        single_node_graph = {
-            1: []
-        }
+        single_node_graph = {1: []}
         problem = Problem(1, 1)
         path, distance, depth = depth_limited_search(problem, single_node_graph, 1)
         self.assertEqual(path, [1])

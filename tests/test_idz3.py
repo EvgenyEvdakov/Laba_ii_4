@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-import unittest
 import sys
+import unittest
 
-sys.path.append('../src')
+
+sys.path.append("../src")
 from idz3 import BinaryTreeNode, depth_limited_search
 
 
@@ -30,18 +31,18 @@ class TestWarehouseSystem(unittest.TestCase):
     def test_max_value_at_missing_depth(self):
         # Проверяем, если глубина превышает максимальную глубину дерева
         max_value = depth_limited_search(self.root, 5)
-        self.assertEqual(max_value, float('-inf'))  # Узлы отсутствуют на глубине 5
+        self.assertEqual(max_value, float("-inf"))  # Узлы отсутствуют на глубине 5
 
     def test_empty_tree(self):
         # Проверяем пустое дерево
         max_value = depth_limited_search(None, 1)
-        self.assertEqual(max_value, float('-inf'))
+        self.assertEqual(max_value, float("-inf"))
 
     def test_single_node_tree(self):
         # Проверяем дерево с одним узлом
         single_node_tree = BinaryTreeNode(42)
         max_value = depth_limited_search(single_node_tree, 1)
-        self.assertEqual(max_value, float('-inf'))  # На глубине 1 узлов нет
+        self.assertEqual(max_value, float("-inf"))  # На глубине 1 узлов нет
         max_value = depth_limited_search(single_node_tree, 0)
         self.assertEqual(max_value, 42)  # Глубина 0 — это сам узел
 

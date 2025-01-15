@@ -3,6 +3,7 @@
 
 # Система управления складом
 
+
 class BinaryTreeNode:
     def __init__(self, value, left=None, right=None):
         self.value = value
@@ -15,7 +16,7 @@ class BinaryTreeNode:
 
 def depth_limited_search(node, limit, depth=0):
     if node is None:
-        return float('-inf')  # Возвращаем минимальное значение, если узел отсутствует
+        return float("-inf")  # Возвращаем минимальное значение, если узел отсутствует
     if depth == limit:
         return node.value  # Возвращаем значение узла на заданной глубине
 
@@ -25,13 +26,14 @@ def depth_limited_search(node, limit, depth=0):
     # Возвращаем максимальное значение между найденными ценностями
     return max(left_value, right_value)
 
+
 if __name__ == "__main__":
     root = BinaryTreeNode(
         3,
         BinaryTreeNode(1, BinaryTreeNode(0), None),
         BinaryTreeNode(5, BinaryTreeNode(4), BinaryTreeNode(6)),
     )
-    
+
     limit = 2
 
     # Вызов функции поиска максимального значения
